@@ -60,6 +60,10 @@ export const routes: Routes = [
         ]
     },
     {
+        path: 'jobs',
+        loadComponent: () => import('./job-listings/job-listings.component').then(c => c.JobListingsComponent)
+    },
+    {
         path: '**',
         redirectTo: 'auth/user/login',
         pathMatch: 'full'
