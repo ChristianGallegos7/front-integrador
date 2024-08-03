@@ -6,7 +6,6 @@ import { RouterModule } from '@angular/router';
   standalone: true,
   imports: [RouterModule],
   templateUrl: './register-page.component.html',
-  styleUrl: './register-page.component.scss'
 })
 export class RegisterPageComponent {
 

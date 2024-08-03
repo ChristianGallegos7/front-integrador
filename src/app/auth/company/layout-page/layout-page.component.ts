@@ -9,7 +9,6 @@ import { NavbarComponent } from '@shared/navbar/navbar.component';
   standalone: true,
   imports: [LoginPageComponent, RegisterPageComponent, RouterModule, NavbarComponent],
   templateUrl: './layout-page.component.html',
-  styleUrl: './layout-page.component.scss'
 })
 export class LayoutPageComponent {
 
