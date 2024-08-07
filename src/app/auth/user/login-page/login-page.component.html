@@ -1,15 +1,15 @@
 <div class="min-h-screen flex items-center justify-center bg-gray-900">
     <div class="bg-gray-800 shadow-lg rounded-lg p-10 max-w-sm w-full">
         <h2 class="text-center text-4xl font-bold mb-10 text-white">Iniciar Sesión</h2>
-        <form>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <div class="mb-5">
                 <label for="email" class="block mb-2 text-sm font-medium text-gray-300">Tu email</label>
-                <input type="email" id="email" placeholder="name@flowbite.com" required
+                <input formControlName="email" type="email" id="email" placeholder="name@flowbite.com" required
                     class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" />
             </div>
             <div class="mb-5">
                 <label for="password" class="block mb-2 text-sm font-medium text-gray-300">Tu contraseña</label>
-                <input type="password" id="password" required
+                <input formControlName="password" type="password" id="password" required
                     class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" />
             </div>
             <div class="text-center mb-5">
@@ -18,7 +18,8 @@
                     Sesión</button>
             </div>
             <div class="text-center">
-                <a class="text-sm font-bold text-blue-400 hover:text-blue-500" routerLink="/auth/register">No tienes una cuenta? Crear
+                <a class="text-sm font-bold text-blue-400 hover:text-blue-500" routerLink="/auth/register">No tienes una
+                    cuenta? Crear
                     Cuenta</a>
             </div>
         </form>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { AuthService } from '@services/auth.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
@@ -14,7 +14,9 @@ export class RegisterPageComponent {
 
   registerForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {
+  constructor(
+    private router: Router,
+    private fb: FormBuilder, private authService: AuthService) {
     this.registerForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -27,6 +29,7 @@ export class RegisterPageComponent {
       this.authService.register(this.registerForm.value).subscribe(
         response => {
           console.log('Registro exitoso', response);
+          this.router.navigate(['/jobs']);
         },
         error => {
           console.error('Error en el registro', error);

@@ -1,1 +1,51 @@
-<p>job-listings works!</p>
+<div class="flex h-screen bg-gray-100">
+    <!-- Sidebar -->
+    <div class="w-64 bg-gray-800 text-white flex flex-col">
+        <div class="p-6">
+            <h1 class="text-3xl font-semibold">Panel de Control</h1>
+        </div>
+        <nav class="flex-1 px-4 space-y-2">
+            <a routerLink="/jobs" routerLinkActive="bg-blue-500"
+                class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700">Ver empleos</a>
+            <a routerLink="/cuenta" routerLinkActive="bg-blue-500"
+                class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700">Mi cuenta</a>
+        </nav>
+    </div>
+
+    <!-- Main content -->
+    <div class="flex-1 flex flex-col">
+        <!-- Navbar -->
+        <header class="bg-white shadow-md p-4 flex justify-between items-center">
+            <img src="cuervos.png" alt="Logo" class="h-10">
+            <button class="text-gray-800 font-semibold hover:text-blue-600">Cerrar sesión</button>
+        </header>
+
+        <!-- Content -->
+        <main class="flex-1 p-6">
+            <!-- Aquí va el contenido de la sección seleccionada -->
+            <div id="content">
+                <!-- Ejemplo de contenido por defecto -->
+                <h2 class="text-2xl font-bold mb-4">Ver empleos</h2>
+                <div class="grid gap-6">
+                    @for (empleo of empleos; track $index) {
+                    <div class="bg-white shadow-lg rounded-lg overflow-hidden mb-6">
+                        <div class="p-6">
+                            <h1 class="text-2xl font-bold text-gray-800 mb-2">{{ empleo.title }}</h1>
+                            <p class="text-gray-600 mb-4">{{ empleo.description }}</p>
+                            <div class="flex items-center justify-between text-gray-700">
+                                <p class="text-sm">
+                                    <span class="font-medium">Ubicación:</span> {{ empleo.location }}
+                                </p>
+                                <p class="text-sm">
+                                    <span class="font-medium">Salario:</span> ${{ empleo.salary }}
+                                </p>
+                            </div>
+                            <button class="bg-blue-500 px-5 py-3 text-white font-bold mt-3 rounded hover:bg-blue-700"> Aplicar </button>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+        </main>
+    </div>
+</div>

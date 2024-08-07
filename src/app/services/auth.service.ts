@@ -13,4 +13,12 @@ export class AuthService {
   register(user: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/auth/register`, user);
   }
+
+  login(user: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/auth/login`, user)
+  }
+
+  getProfile(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/auth/me`);
+  }
 }
