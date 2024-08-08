@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt'
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class AuthService {
 
   private jwtHelper = new JwtHelperService();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   register(user: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/auth/register`, user);
@@ -19,6 +20,11 @@ export class AuthService {
 
   login(user: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/auth/login`, user)
+  }
+
+  public logout(): void {
+    localStorage.removeItem('authToken');  // Eliminar el token almacenado
+    this.router.navigate(['/auth/user/login']);  // Redirigir al usuario al login
   }
 
   getToken() {
