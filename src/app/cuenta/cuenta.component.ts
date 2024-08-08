@@ -11,18 +11,14 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./cuenta.component.scss']
 })
 export class CuentaComponent implements OnInit {
-  userProfile: any;
+  public userName: string | null = null;
+  public email: string | null = null;
 
-  constructor(private router: Router, private authService: AuthService) {}
+  constructor(private router: Router, private authService: AuthService) { }
 
   ngOnInit() {
-    this.authService.getProfile().subscribe(
-      profile => {
-        this.userProfile = profile;
-      },
-      error => {
-        console.error('Error al obtener el perfil', error);
-      }
-    );
+    const user = this.authService.getUser();
+    this.userName = user ? user.name : null;
+    this.email = user ? user.email : null;
   }
 }
