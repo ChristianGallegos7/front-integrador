@@ -27,7 +27,7 @@ export class LoginPageComponent {
         response => {
           console.log('Login exitoso', response);
           localStorage.setItem('authToken', response.token); // Guarda el token
-          this.router.navigate(['/jobs']);
+          this.router.navigate(['/dashboard']);
         },
         error => {
           console.error('Error en el login', error);

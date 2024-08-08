@@ -60,8 +60,28 @@ export const routes: Routes = [
         ]
     },
     {
-        path: 'jobs',
-        loadComponent: () => import('./job-listings/job-listings.component').then(c => c.JobListingsComponent)
+        path: 'dashboard',
+        loadComponent: () => import('./layouts/empleos-layout-page/empleos-layout-page.component').then(c => c.EmpleosLayoutPageComponent),
+        children: [
+            {
+                path: 'jobs',
+                loadComponent: () => import('./job-listings/job-listings.component').then(c => c.JobListingsComponent)
+            },
+            {
+                path: 'cuenta',
+                loadComponent: () => import('./cuenta/cuenta.component').then(c => c.CuentaComponent)
+            },
+            {
+                path: '',
+                redirectTo: 'jobs',
+                pathMatch: 'full'
+            },
+            {
+                path: '**',
+                redirectTo: 'jobs',
+                pathMatch: 'full'
+            }
+        ]
     },
     {
         path: '**',

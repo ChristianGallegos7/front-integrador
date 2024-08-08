@@ -29,7 +29,7 @@ export class RegisterPageComponent {
       this.authService.register(this.registerForm.value).subscribe(
         response => {
           console.log('Registro exitoso', response);
-          this.router.navigate(['/jobs']);
+          this.router.navigate(['/dashboard']);
         },
         error => {
           console.error('Error en el registro', error);
